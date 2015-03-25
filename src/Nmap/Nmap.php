@@ -57,11 +57,6 @@ class Nmap
         $this->executor   = $executor ?: new ProcessExecutor();
         $this->outputFile = $outputFile ?: sys_get_temp_dir() . '/output.xml';
         $this->executable = $executable;
-
-        // If executor returns anything else than 0 (success exit code), throw an exeption since $executable is not executable.
-        if ($executor->execute($this->executable) !== 0) {
-            throw new \InvalidArgumentException(sprintf('`%s` is not executable.', $this->executable));
-        }
     }
 
     /**
